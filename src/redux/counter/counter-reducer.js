@@ -1,11 +1,10 @@
+import {counterAction} from './counter-saga';
+
 export default function counterReducer(state = 0, action) {
     switch (action.type) {
-        case 'INCREMENT':
-            return state + 1;
-        case 'INCREMENT_IF_ODD':
-            return (state % 2 !== 0) ? state + 1 : state;
-        case 'DECREMENT':
-            return state - 1;
+        case counterAction.INCREMENT:
+        case counterAction.DECREMENT:
+            return state;
         default:
             return state
     }
