@@ -1,31 +1,23 @@
 import {put, takeEvery} from 'redux-saga/effects';
 
 export const counterAction = {
-    CHANGING: 'CHANGING',
-    INCREMENT: 'INCREMENT',
-    DECREMENT: 'DECREMENT'
+    VALUE_CHANGING_START: 'VALUE_CHANGING_START',
+    VALUE_CHANGING_SUCCESS: 'VALUE_CHANGING_SUCCESS',
 };
 
-export const increment = value => ({
-    type: counterAction.INCREMENT,
+export const changeValueAction = value => ({
+    type: counterAction.VALUE_CHANGING_SUCCESS,
     payload: {
         value
     },
 });
 
-export const decrement = value => ({
-    type: counterAction.DECREMENT,
-    payload: {
-        value
-    },
-});
-
-function* handleCounterValue(value) {
-    yield put(increment(value));
+function* handleCounterValueChange(change) {
+    yield put(changeValueAction(change));
 }
 
 function* counterSaga() {
-    yield takeEvery(counterAction.CHANGING, handleCounterValue);
+    yield takeEvery(counterAction.VALUE_CHANGING_START, handleCounterValueChange);
 }
 
 export default counterSaga;

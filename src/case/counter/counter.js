@@ -1,23 +1,25 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import CounterScoreboard from './counter-scoreboard';
 import {useSelector, useDispatch} from 'react-redux';
-import {increment, decrement} from '../../redux/counter/counter-saga';
+import {changeValueAction} from '../../redux/counter/counter-saga';
 
 const Counter = () => {
-    const dispatch = useDispatch();
     const counter = useSelector(state => state.counter);
-    const [currentValue, changeValue] = useState(0);
+    const dispatch = useDispatch();
+    const [currentValue, updateValue] = useState(0);
+
+    useEffect(() => {
+        dispatch(changeValueAction(currentValue));
+    });
     return (
         <div>
             <button onClick={() => {
-                changeValue(currentValue + 1);
-                dispatch(increment(currentValue));
+                updateValue(currentValue + 1);
             }}>Increment
             </button>
             <hr/>
             <button onClick={() => {
-                changeValue(currentValue - 1);
-                dispatch(decrement(currentValue));
+                updateValue(currentValue - 1);
             }}>Decrement
             </button>
             <hr/>
