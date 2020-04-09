@@ -1,9 +1,13 @@
 import {counterAction} from './counter-saga';
 
-export default function counterReducer(state = 0, action) {
+const initState = {
+    counter: 0
+};
+
+export default function counterReducer(state = initState, action) {
     switch (action.type) {
         case counterAction.VALUE_CHANGING_SUCCESS:
-            return state;
+            return {counter: action.payload.value};
         default:
             return state
     }

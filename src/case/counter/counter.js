@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import CounterScoreboard from './counter-scoreboard';
 import {useSelector, useDispatch} from 'react-redux';
-import {changeValueAction} from '../../redux/counter/counter-saga';
+import {startChangeValue} from '../../redux/counter/counter-saga';
 
 const Counter = () => {
     const counter = useSelector(state => state.counter);
@@ -9,7 +9,7 @@ const Counter = () => {
     const [currentValue, updateValue] = useState(0);
 
     useEffect(() => {
-        dispatch(changeValueAction(currentValue));
+        dispatch(startChangeValue(currentValue));
     });
     return (
         <div>
