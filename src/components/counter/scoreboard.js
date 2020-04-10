@@ -4,7 +4,7 @@ import {useSelector} from 'react-redux';
 const CounterScoreboard = () => {
     const counter = useSelector(state => state.counter);
     return (
-        <div>{counter}</div>
+        <div>計分板: {counter}</div>
     );
 };
 
