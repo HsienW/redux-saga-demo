@@ -7,10 +7,10 @@ export const userListAction = {
     GET_USER_LIST_FAIL: 'GET_USER_LIST_FAIL'
 };
 
-export const getUserListStart = value => ({
+export const getUserListStart = request => ({
     type: userListAction.GET_USER_LIST_START,
     payload: {
-        value
+        request
     },
 });
 
@@ -29,11 +29,12 @@ export const getUserListFail = response => ({
 });
 
 function* fetchUserListData() {
-    const data = yield call(
-        () => userListApiSimulation
-            .then(response => response),
-    );
-    yield put(getUserListSuccess(data));
+    try {
+        const data = yield call(userListApiSimulation);
+        yield put(getUserListSuccess(data));
+    } catch (error) {
+        yield put(getUserListFail(error));
+    }
 }
 
 function* userListSaga() {
