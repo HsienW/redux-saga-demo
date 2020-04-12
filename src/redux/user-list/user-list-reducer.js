@@ -6,9 +6,6 @@ const initState = {
 
 export default function userListReducer(state = initState, action) {
     switch (action.type) {
-        case userListAction.GET_USER_LIST_START:
-            return {userListData: state};
-
         case userListAction.GET_USER_LIST_SUCCESS:
         case userListAction.GET_USER_LIST_FAIL:
             return {userListData: action.payload.response};
