@@ -5,16 +5,14 @@ import UserListItem from '../../components/user-list/user-list-item';
 
 const UserList = () => {
     const dispatch = useDispatch();
-    const userListData = useSelector((state) => {
-        return state.userListReducer.userListData
-    });
+    const userListData = useSelector(state => state.userListReducer.userListData);
     const fakeRequest = {
         fake: 'fake'
     };
 
     useEffect(() => {
         dispatch(getUserListStart(fakeRequest));
-    });
+    },[dispatch]);
 
     return (
         <div>
@@ -25,7 +23,7 @@ const UserList = () => {
                         return (
                             <UserListItem
                                 key={item.id}
-                                item={item}
+                                name={item.name}
                             />
                         );
                     })
