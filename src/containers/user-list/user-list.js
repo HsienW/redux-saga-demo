@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {getUserListStart} from '../../redux/user-list/user-list-saga';
-import UserListItem from '../../components/user-list/user-list-item';
+import {UserListItem} from '../../components';
 
 const UserList = () => {
     const dispatch = useDispatch();

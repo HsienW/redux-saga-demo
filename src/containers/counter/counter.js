@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import CounterScoreboard from '../../components/counter/scoreboard';
+import {CounterScoreboard} from '../../components';
 import {useDispatch} from 'react-redux';
 import {startChangeValue} from '../../redux/counter/counter-saga';
 

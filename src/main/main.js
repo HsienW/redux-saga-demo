@@ -1,18 +1,17 @@
 import React from 'react'
 import {Switch, Route, Link} from 'react-router-dom';
-import Home from '../containers/home/home';
-import Counter from '../containers/counter/counter';
-import UserList from '../containers/user-list/user-list';
+import {Home, Counter, UserList, Login} from '../containers';
 
 const Main = () => (
-    <div>
+    <div >
         <ul>
-            <li><Link to="/">Home</Link></li>
+            <li><Link to="/home">Home</Link></li>
             <li><Link to="/counter">Counter</Link></li>
             <li><Link to="/user-list">User List</Link></li>
         </ul>
         <Switch>
-            <Route exact path="/" component={Home} />
+            <Route exact path="/" component={Login} />
+            <Route exact path="/home" component={Home} />
             <Route path="/counter" component={Counter} />
             <Route path="/user-list" component={UserList} />
         </Switch>
