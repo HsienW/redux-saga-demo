@@ -1,9 +1,10 @@
-import React from 'react'
-// import {Link} from 'react-router-dom';
+import React, {useEffect} from 'react'
+import {useHistory} from 'react-router-dom';
 import {loginStart} from '../../redux/auth/auth-saga';
 import {useDispatch, useSelector} from "react-redux";
 
 const Auth = () => {
+    let history = useHistory();
     const dispatch = useDispatch();
     const authData = useSelector(state => state.authReducer.auth);
     const fakeRequest = {
@@ -14,6 +15,11 @@ const Auth = () => {
     const handleLogin = () => {
         dispatch(loginStart(fakeRequest));
     };
+
+    useEffect(() => {
+        if (authData === undefined) return;
+        history.push('/home');
+    }, [authData]);
 
     return (
         <div>
