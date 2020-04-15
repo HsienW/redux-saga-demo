@@ -42,10 +42,10 @@ export const logout = response => ({
 
 function* login(user, password) {
     try {
-        const userData = yield call(loginApiSimulation, user, password);
-        yield put(loginSuccess(userData));
-        yield call(setSession, userData);
-        return userData
+        const response = yield call(loginApiSimulation, user, password);
+        yield put(loginSuccess(response));
+        yield call(setSession, response);
+        return response
     } catch(error) {
         yield put(loginFail(error));
     } finally {
