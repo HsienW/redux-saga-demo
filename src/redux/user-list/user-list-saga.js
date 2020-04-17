@@ -1,5 +1,5 @@
 import {call, put, takeEvery} from 'redux-saga/effects';
-import {userListApiSimulation} from '../../common/api-simulation';
+import {userListApiSimulation} from '../../api/api-simulation';
 
 export const userListAction = {
     GET_USER_LIST_START: 'GET_USER_LIST_START',

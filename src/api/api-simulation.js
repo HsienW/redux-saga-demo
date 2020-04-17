@@ -1,4 +1,4 @@
-export const loginApiSimulation = () => {
+export const profileApiSimulation = () => {
     return new Promise((resolve, reject) => {
         const success = true;
         if (success) {
@@ -8,6 +8,31 @@ export const loginApiSimulation = () => {
                     token: '1234567890'
                 });
             }, 1000);
+        } else {
+            reject([]);
+        }
+    });
+};
+
+export const subscribeApiSimulation = () => {
+    return new Promise((resolve, reject) => {
+        const success = true;
+        if (success) {
+            setTimeout(() => {
+                resolve({
+                    title: 'Subscribe',
+                    subscribeItem: [
+                        {
+                            title: 'Subscribe A',
+                            number: 1
+                        },
+                        {
+                            title: 'Subscribe B',
+                            number: 2
+                        }
+                    ]
+                });
+            }, 2000);
         } else {
             reject([]);
         }
