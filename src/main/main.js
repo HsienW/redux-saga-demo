@@ -7,6 +7,7 @@ const LayoutProvider = (props) => (
     <div>
         <Sidebar/>
         <Header/>
+        {/* eslint-disable-next-line react/prop-types */}
         {props.children}
         <Footer/>
     </div>
