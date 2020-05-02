@@ -17,7 +17,8 @@
     "start": "webpack-dev-server --mode development --progress --watch --hot",
     "dist": "npm run clean && webpack --mode production",
     "clean": "rimraf dist/*",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --watchAll --verbose",
+    "test-coverage": "jest --watchAll --verbose --coverage"
   },
   "devDependencies": {
     "@babel/core": "7.9.6",
