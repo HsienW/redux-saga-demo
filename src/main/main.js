@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {Switch, Route} from 'react-router-dom';
 import {Sidebar, Header, Footer} from '../layout';
 import {Home, Counter, UserList, Auth} from '../containers';
@@ -27,4 +27,4 @@ const Main = () => (
 );
 
 
-export default Main
+export default Main;

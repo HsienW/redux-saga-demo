@@ -10,6 +10,6 @@ export default function userListReducer(state = initState, action) {
         case userListAction.GET_USER_LIST_FAIL:
             return {userListData: action.payload.response};
         default:
-            return state
+            return state;
     }
 }

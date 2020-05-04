@@ -9,6 +9,6 @@ export default function counterReducer(state = initState, action) {
         case counterAction.VALUE_CHANGING_SUCCESS:
             return {counter: action.payload.value};
         default:
-            return state
+            return state;
     }
 }
