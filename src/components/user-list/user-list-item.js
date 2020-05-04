@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const UserListItem = (item) => {
     return (
@@ -6,4 +6,4 @@ const UserListItem = (item) => {
     );
 };
 
-export default UserListItem
+export default UserListItem;
