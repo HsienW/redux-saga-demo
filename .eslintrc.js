@@ -8,7 +8,8 @@ module.exports = {
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended",
-        "plugin:testing-library/react"
+        "plugin:testing-library/react",
+        "plugin:jest-dom/recommended"
     ],
     "parserOptions": {
         "ecmaFeatures": {
@@ -19,7 +20,8 @@ module.exports = {
     },
     "plugins": [
         "react",
-        "testing-library"
+        "testing-library",
+        "jest-dom"
     ],
     "parser": "babel-eslint",
     "overrides": [
@@ -37,6 +39,10 @@ module.exports = {
         "testing-library/await-async-query": "error",
         "testing-library/no-await-sync-query": "error",
         "testing-library/no-debug": "warn",
+        "jest-dom/prefer-required": "error",
+        "jest-dom/prefer-enabled-disabled": "error",
+        "jest-dom/prefer-checked": "error",
+        "jest-dom/prefer-to-have-attribute": "error",
         "indent": [
             "error",
             4,
