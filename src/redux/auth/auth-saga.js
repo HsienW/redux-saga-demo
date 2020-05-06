@@ -1,5 +1,5 @@
 import {all, call, put, take, fork, cancel, cancelled} from 'redux-saga/effects';
-import {setSession, clearSession} from '../../common/common';
+import {setSession, clearSession} from '../../utils/utils';
 import {profileApiSimulation, subscribeApiSimulation} from '../../api/api-simulation';
 
 export const loginAction = {

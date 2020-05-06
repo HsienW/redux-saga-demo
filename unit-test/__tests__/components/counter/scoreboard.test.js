@@ -1,28 +1,13 @@
 import React from 'react';
-import {render} from '@testing-library/react';
 import {describe, expect} from '@jest/globals';
-import {CounterScoreboard} from '../../../src/components';
-import {createStore, combineReducers} from 'redux';
-import {Provider, useDispatch} from 'react-redux';
-import counterReducer from '../../../src/redux/counter/counter-reducer';
+import {CounterScoreboard} from '../../../../src/components';
+import {useDispatch} from 'react-redux';
+import {providerComponentGenerator} from '../../../test-common/test-common';
 import '@testing-library/jest-dom';
-
-const rootReducer = combineReducers({
-    counterReducer,
-});
-
-const generateComponent = (component, initState) => {
-    const store = createStore(rootReducer, initState);
-    return render(
-        <Provider store={store}>
-            {component}
-        </Provider>,
-    );
-};
 
 describe('CounterScoreboard', () => {
     test('should create', () => {
-        const {getByTestId} = generateComponent(<CounterScoreboard/>);
+        const {getByTestId} = providerComponentGenerator(<CounterScoreboard/>);
         expect(getByTestId('counter-scoreboard')).toBeInTheDocument();
     });
 
