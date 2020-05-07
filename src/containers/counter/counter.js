@@ -12,7 +12,7 @@ const Counter = () => {
     });
     return (
         <div>
-            <button onClick={() => {
+            <button data-testid='increment-counter-btn' onClick={() => {
                 updateValue(currentValue + 1);
             }}>Increment
             </button>
