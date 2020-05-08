@@ -4,9 +4,7 @@ import {createStore, combineReducers} from 'redux';
 import {Provider} from 'react-redux';
 
 const createRootReducer = (reducer) => {
-    return combineReducers({
-        reducer
-    });
+    return combineReducers({reducer});
 };
 
 export const providerComponentGenerator = (component, reducer, initState) => {
