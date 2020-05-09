@@ -25,7 +25,7 @@ const Counter = () => {
             <div>當前得分: {currentValue}</div>
             <CounterScoreboard/>
         </div>
-    )
+    );
 };
 
 export default Counter;
