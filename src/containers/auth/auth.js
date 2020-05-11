@@ -1,7 +1,7 @@
-import React, {useEffect} from 'react'
+import React, {useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
 import {loginStart} from '../../redux/auth/auth-saga';
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch, useSelector} from 'react-redux';
 
 const Auth = () => {
     let history = useHistory();

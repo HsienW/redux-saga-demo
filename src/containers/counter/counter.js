@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect} from 'react';
 import {CounterScoreboard} from '../../components';
 import {useDispatch} from 'react-redux';
 import {startChangeValue} from '../../redux/counter/counter-saga';
@@ -11,7 +11,7 @@ const Counter = () => {
         dispatch(startChangeValue(currentValue));
     });
     return (
-        <div>
+        <div data-testid='counter-container'>
             <button data-testid='increment-counter-btn' onClick={() => {
                 updateValue(currentValue + 1);
             }}>Increment
