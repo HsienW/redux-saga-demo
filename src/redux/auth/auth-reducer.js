@@ -5,7 +5,7 @@ const initState = {
     token: ''
 };
 
-export default function authReducer(state = initState, action) {
+export function authReducer(state = initState, action) {
     switch (action.type) {
         case loginAction.LOGIN_SUCCESS:
         case loginAction.LOGIN_FAIL:
