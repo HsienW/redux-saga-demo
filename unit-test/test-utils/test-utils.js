@@ -18,6 +18,18 @@ export const providerRenderStore = (component, reducer, initState = {}) => {
     );
 };
 
+export const providerRenderWithRedux = (reducer) => {
+    return (component, {initState, store = createStore(reducer, initState),} = {}) => ({
+        ...render(<Provider store={store}>{component}</Provider>),
+        store,
+    });
+};
+
+// export const renderWithRedux = (ui, { initialState, store = createStore(reducer, initialState), } = {}) => ({
+//     ...render(<Provider store={store}>{ui}</Provider>),
+//     store,
+// });
+
 // export const providerRenderWithRedux = (component, reducer) => {
 //     return (
 //         component,
