@@ -1,40 +1,56 @@
 import React from 'react';
 import {describe, expect} from '@jest/globals';
-import {Counter} from '../../../../src/containers';
 import {CounterScoreboard} from '../../../../src/components';
-import {fireEvent} from '@testing-library/react';
-import {providerRenderStore, providerRenderWithRedux} from '../../../test-utils/test-utils';
+import {providerRenderStore} from '../../../test-utils/test-utils';
+import {counterReducer} from '../../../../src/redux/counter/counter-reducer';
+import '@testing-library/jest-dom';
+
+
+// import {Counter} from '../../../../src/containers';
+// import {fireEvent} from '@testing-library/react';
 // import renderHook from '@testing-library/react-hooks';
-import counterReducer from '../../../../src/redux/counter/counter-reducer';
-import {createStore} from 'redux';
-import {combineReducers} from 'redux';
+// import {createStore} from 'redux';
+// import {combineReducers} from 'redux';
 //
 // import {createStore} from 'redux';
 // import {Provider} from 'react-redux';
 
 // import * as reactRedux from 'react-redux';
-import '@testing-library/jest-dom';
 
 describe('CounterScoreboard', () => {
     test('should create', () => {
         const {getByTestId} = providerRenderStore(
             <CounterScoreboard/>,
             counterReducer,
+            {counterReducer: {counter: 0}}
         );
         expect(getByTestId('counter-scoreboard')).toBeInTheDocument();
     });
 
-    // todo should check redux type whether meet current testing type.
-
-    test('can render with redux with custom store', () => {
-        // this is a silly store that can never be changed
-        const store = createStore(combineReducers(counterReducer), {counter: 10});
-        providerRenderWithRedux(<Counter/>, {
-            store,
-        });
-        fireEvent.click(screen.getByText('Increment'));
-        expect(screen.getByTestId('counter-scoreboard')).toHaveTextContent('計分板: 10');
+    test('CounterScoreboard counter should value is 10', () => {
+        const {getByTestId} = providerRenderStore(
+            <CounterScoreboard/>,
+            counterReducer,
+            {counterReducer: {counter: 10}}
+        );
+        expect(getByTestId('counter-scoreboard')).toHaveTextContent('計分板: 10');
     });
+
+    // test('CounterScoreboard dispatch add action', () => {
+    //
+    //     const {getByTestId} = providerRenderStore(
+    //         <Counter/>,
+    //         counterReducer
+    //     );
+    //
+    //     const {getByText} = providerRenderStore(
+    //         <CounterScoreboard/>,
+    //         counterReducer
+    //     );
+    //
+    //     fireEvent.click(getByTestId('increment-counter-btn'));
+    //     expect(getByTestId('display_count').textContent).toBe('點了1下');
+    //     // expect(getByTestId('counter-scoreboard')).toBeInTheDocument();
 
 
     // test('CounterScoreboard dispatch add action', () => {
