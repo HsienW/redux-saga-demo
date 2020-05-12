@@ -18,7 +18,8 @@
     "dist": "npm run clean && webpack --mode production",
     "clean": "rimraf dist/*",
     "test": "jest --watchAll --verbose",
-    "test-coverage": "jest --watchAll --verbose --coverage"
+    "test-coverage": "jest --watchAll --verbose --coverage",
+    "test-update": "jest --updateSnapshot"
   },
   "devDependencies": {
     "@babel/core": "7.9.6",

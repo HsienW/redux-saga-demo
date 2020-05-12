@@ -1,17 +1,25 @@
 import React from 'react';
-import {describe, expect} from '@jest/globals';
+import {describe} from '@jest/globals';
 import {providerRenderStore} from '../../../test-utils/test-utils';
 import {Counter} from '../../../../src/containers';
+// import {CounterScoreboard} from '../../../../src/components/counter/scoreboard';
 import {counterReducer} from '../../../../src/redux/counter/counter-reducer';
+import {combineReducers} from 'redux';
 import '@testing-library/jest-dom';
 
+jest.mock('CounterScoreboard', () => {
+    const FakeCounterScoreboard = jest.fn(({children}) => children);
+    return {CounterScoreboard: FakeCounterScoreboard};
+});
+
 describe('Counter', () => {
-    test('should create',async () => {
-        const {getByTestId} = providerRenderStore(
+    test('should create', () => {
+        const {container} = providerRenderStore(
             <Counter/>,
-            counterReducer,
-            {counterReducer: {counter: 0}}
+            combineReducers(counterReducer),
         );
-        expect(getByTestId('counter-container')).toBeInTheDocument();
+        container.querySelector('input').value = 'Test';
+        console.log(container);
+        // expect(container).toBeInTheDocument();
     });
 });
