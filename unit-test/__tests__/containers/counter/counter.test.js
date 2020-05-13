@@ -7,13 +7,13 @@ import {counterReducer} from '../../../../src/redux/counter/counter-reducer';
 import {combineReducers} from 'redux';
 import '@testing-library/jest-dom';
 
-jest.mock('CounterScoreboard', () => {
-    const FakeCounterScoreboard = jest.fn(({children}) => children);
-    return {CounterScoreboard: FakeCounterScoreboard};
-});
+// jest.mock('CounterScoreboard', () => {
+//     const FakeCounterScoreboard = jest.fn(({children}) => children);
+//     return {CounterScoreboard: FakeCounterScoreboard};
+// });
 
 describe('Counter', () => {
-    test('should create', () => {
+    test.skip('should create', () => {
         const {container} = providerRenderStore(
             <Counter/>,
             combineReducers(counterReducer),
