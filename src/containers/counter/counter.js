@@ -24,7 +24,6 @@ const Counter = () => {
             <hr/>
             <div>當前得分: {currentValue}</div>
             <CounterScoreboard/>
-            <input>Test</input>
         </div>
     );
 };

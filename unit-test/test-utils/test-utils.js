@@ -9,7 +9,7 @@ import {Provider} from 'react-redux';
 //     });
 // };
 
-export const providerRenderStore = (component, reducer, initState = {}) => {
+export const providerRenderStore = (component, reducer, initState) => {
     const store = createStore(reducer, initState);
     return render(
         <Provider store={store}>

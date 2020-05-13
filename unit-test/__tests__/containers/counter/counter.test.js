@@ -2,24 +2,31 @@ import React from 'react';
 import {describe} from '@jest/globals';
 import {providerRenderStore} from '../../../test-utils/test-utils';
 import {Counter} from '../../../../src/containers';
-// import {CounterScoreboard} from '../../../../src/components/counter/scoreboard';
 import {counterReducer} from '../../../../src/redux/counter/counter-reducer';
-import {combineReducers} from 'redux';
+// import * as component from '../../../../src/components/counter/scoreboard';
+import {CounterScoreboard} from '../../../../src/components/counter/scoreboard';
 import '@testing-library/jest-dom';
 
-// jest.mock('CounterScoreboard', () => {
-//     const FakeCounterScoreboard = jest.fn(({children}) => children);
-//     return {CounterScoreboard: FakeCounterScoreboard};
-// });
+jest.mock('../../../../src/components/counter/scoreboard');
+
+// const getCounterScoreboardSpy = jest.spyOn(
+//     component, 'CounterScoreboard',
+// );
 
 describe('Counter', () => {
-    test.skip('should create', () => {
-        const {container} = providerRenderStore(
+
+    beforeAll(() => {
+        CounterScoreboard.mockReturnValue(<div>計分板: 10</div>);
+    });
+
+    test('should create', () => {
+        const {getByTestId} = providerRenderStore(
             <Counter/>,
-            combineReducers(counterReducer),
+            counterReducer,
+            {counterReducer: {counter: 10}}
         );
-        container.querySelector('input').value = 'Test';
-        console.log(container);
-        // expect(container).toBeInTheDocument();
+        expect(CounterScoreboard).toHaveBeenCalled();
+        expect(getByTestId('counter-container')).toBeInTheDocument();
     });
 });
+
