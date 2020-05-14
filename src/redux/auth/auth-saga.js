@@ -67,7 +67,7 @@ export const logout = response => ({
     }
 });
 
-function* login(account, password) {
+export function* login(account, password) {
     try {
         // const response = yield call(profileApiSimulation, account, password);
         const [profileResponse, subscribeResponse] = yield all([
@@ -77,7 +77,7 @@ function* login(account, password) {
         yield put(loginSuccess(profileResponse));
         yield put(getSubscribeSuccess(subscribeResponse));
         yield call(setSession, profileResponse);
-        return [profileResponse, subscribeResponse]
+        return [profileResponse, subscribeResponse];
     } catch(error) {
         yield put(loginFail(error));
         // todo 在這裡需要 get subscribe 失敗操作
