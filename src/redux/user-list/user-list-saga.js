@@ -28,7 +28,8 @@ export const getUserListFail = response => ({
     },
 });
 
-function* fetchUserListData() {
+
+export function* fetchUserListData() {
     try {
         const data = yield call(userListApiSimulation);
         yield put(getUserListSuccess(data));
