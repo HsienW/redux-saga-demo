@@ -13,11 +13,11 @@ jest.mock('../../../../src/components/counter/scoreboard');
 //     component, 'CounterScoreboard',
 // );
 
-describe('Counter', () => {
+beforeAll(() => {
+    CounterScoreboard.mockReturnValue(<div>計分板: 10</div>);
+});
 
-    beforeAll(() => {
-        CounterScoreboard.mockReturnValue(<div>計分板: 10</div>);
-    });
+describe('Counter', () => {
 
     test('should create', () => {
         const {getByTestId} = providerRenderStore(
