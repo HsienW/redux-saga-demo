@@ -8,7 +8,6 @@ describe('UserListSaga', () => {
     test('API: Get User List Data', () => {
         const apiGenerator = fetchUserListData();
         const getDataStart = apiGenerator.next().value;
-        // console.log(callGetDataApi);
         expect(getDataStart).toEqual(call(userListApiSimulation));
 
         const mockApiRespond = [{id: 1, name: '123'}];
