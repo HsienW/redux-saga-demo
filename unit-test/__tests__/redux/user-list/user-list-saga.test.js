@@ -7,12 +7,15 @@ describe('UserListSaga', () => {
 
     test('API: Get User List Data', () => {
         const apiGenerator = fetchUserListData();
-        const getDataApi = apiGenerator.next().value;
+        const getDataStart = apiGenerator.next().value;
         // console.log(callGetDataApi);
-        expect(getDataApi).toEqual(call(userListApiSimulation));
+        expect(getDataStart).toEqual(call(userListApiSimulation));
 
         const mockApiRespond = [{id: 1, name: '123'}];
         const getDataApiSuccess = apiGenerator.next(mockApiRespond).value;
         expect(getDataApiSuccess).toEqual(put(getUserListSuccess(mockApiRespond)));
+
+        const getDataApiDone = apiGenerator.next().done;
+        expect(getDataApiDone).toEqual(true);
     });
 });
