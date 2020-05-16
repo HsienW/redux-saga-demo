@@ -1,7 +1,7 @@
 import {combineReducers} from 'redux';
 import {authReducer} from './auth/auth-reducer';
-import {counterReducer} from '../redux/counter/counter-reducer';
-import {userListReducer} from '../redux/user-list/user-list-reducer';
+import {counterReducer} from './counter/counter-reducer';
+import {userListReducer} from './user-list/user-list-reducer';
 
 const rootReducer = combineReducers({
     authReducer,
