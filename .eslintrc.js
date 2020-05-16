@@ -21,7 +21,8 @@ module.exports = {
     "plugins": [
         "react",
         "testing-library",
-        "jest-dom"
+        "jest-dom",
+        "react-hooks"
     ],
     "parser": "babel-eslint",
     "overrides": [
@@ -36,6 +37,8 @@ module.exports = {
         "no-console": 0,
         "linebreak-style": 0,
         "react/jsx-uses-vars": 1,
+        "react-hooks/rules-of-hooks": 'error',
+        "react-hooks/exhaustive-deps": 'warn',
         "testing-library/await-async-query": "error",
         "testing-library/no-await-sync-query": "error",
         "testing-library/no-debug": "warn",

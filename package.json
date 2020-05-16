@@ -36,6 +36,7 @@
     "eslint-config-airbnb": "18.1.0",
     "eslint-plugin-jest-dom": "2.1.0",
     "eslint-plugin-react": "7.19.0",
+    "eslint-plugin-react-hooks": "4.0.2",
     "eslint-plugin-testing-library": "3.0.4",
     "file-loader": "6.0.0",
     "html-webpack-plugin": "4.3.0",
