@@ -67,7 +67,7 @@ export const logout = response => ({
     }
 });
 
-export function* login(account, password) {
+export function* loginSaga(account, password) {
     try {
         // const response = yield call(profileApiSimulation, account, password);
         const [profileResponse, subscribeResponse] = yield all([
@@ -91,7 +91,7 @@ export function* login(account, password) {
 function* authSaga() {
     while (true) {
         const {user, password} = yield take(loginAction.LOGIN_START);
-        const task = yield fork(login, user, password);
+        const task = yield fork(loginSaga, user, password);
         const action = yield take([logoutAction.LOGOUT, loginAction.LOGIN_FAIL]);
         if (action.type === logoutAction.LOGOUT) {
             yield cancel(task);
