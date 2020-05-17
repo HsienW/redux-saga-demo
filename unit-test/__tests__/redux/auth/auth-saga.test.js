@@ -1,8 +1,15 @@
 import {describe} from '@jest/globals';
-// import {testSaga} from 'redux-saga-test-plan';
-// import {all} from 'redux-saga/effects';
-import {login} from '../../../../src/redux/auth/auth-saga';
-// import {profileApiSimulation} from '../../../../src/api/api-simulation';
+// import {call} from 'redux-saga/effects';
+import {expectSaga} from 'redux-saga-test-plan';
+import {profileApiSimulation, subscribeApiSimulation} from '../../../../src/api/api-simulation';
+import {
+    loginSaga,
+    loginSuccess,
+    getSubscribeSuccess,
+    loginAction,
+    subscribeAction
+} from '../../../../src/redux/auth/auth-saga';
+import * as matchers from 'redux-saga-test-plan/matchers';
 
 describe('AuthSaga', () => {
     test('API: Get Login Data', () => {
@@ -10,10 +17,30 @@ describe('AuthSaga', () => {
             account: 'test',
             password: 'test'
         };
-        const apiGenerator = login(testData.account, testData.password);
+        const apiGenerator = loginSaga(testData.account, testData.password);
         const callGetDataApi = apiGenerator.next().value;
         console.log(callGetDataApi);
         // expect(callGetDataApi).toEqual(call(profileApiSimulation));
+    });
+
+    // todo need change to better test method for saga function.
+    test('provides values for effects inside arrays', () => {
+        const testData = {
+            account: 'test',
+            password: 'test'
+        };
+        return expectSaga(loginSaga)
+            .provide([
+                [matchers.call.fn(profileApiSimulation), testData.account, testData.password],
+                [matchers.call.fn(subscribeApiSimulation), testData.account, testData.password],
+            ])
+            .put(loginSuccess(
+                {type: loginAction.LOGIN_SUCCESS, payload: {response: 'test'}}
+            ))
+            .put(getSubscribeSuccess(
+                {type: subscribeAction.GET_SUBSCRIBE_SUCCESS, payload: {response: 'test'}}
+            ))
+            .run();
     });
 
     // test('API: Get Login Data use test plan', () => {
