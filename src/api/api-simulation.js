@@ -1,4 +1,4 @@
-export const profileApiSimulation = () => {
+export const fakeProfileApi = () => {
     return new Promise((resolve, reject) => {
         const success = true;
         if (success) {
@@ -14,7 +14,7 @@ export const profileApiSimulation = () => {
     });
 };
 
-export const subscribeApiSimulation = () => {
+export const fakeSubscribeApi = () => {
     return new Promise((resolve, reject) => {
         const success = true;
         if (success) {
