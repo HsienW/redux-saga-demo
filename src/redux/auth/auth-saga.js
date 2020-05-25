@@ -1,5 +1,5 @@
 import {all, call, put, take, fork, cancel, cancelled} from 'redux-saga/effects';
-import {clearSession} from '../../utils/utils';
+import {setSession, clearSession} from '../../utils/utils';
 import {profileApiSimulation, subscribeApiSimulation} from '../../api/api-simulation';
 
 export const loginAction = {
@@ -76,8 +76,8 @@ export function* loginSaga(account, password) {
         ]);
         yield put(loginSuccess(profileResponse));
         yield put(getSubscribeSuccess(subscribeResponse));
-        // yield call(setSession, profileResponse);
-        // return [profileResponse, subscribeResponse];
+        yield call(setSession, profileResponse);
+        return [profileResponse, subscribeResponse];
     } catch(error) {
         yield put(loginFail(error));
         // todo 在這裡需要 get subscribe 失敗操作
