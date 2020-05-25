@@ -1,13 +1,8 @@
 import {describe} from '@jest/globals';
 import {call, all} from 'redux-saga/effects';
-import {profileApiSimulation, subscribeApiSimulation} from '../../../../src/api/api-simulation';
-import {
-    loginSaga,
-    // loginSuccess,
-    // getSubscribeSuccess,
-    // loginAction,
-    // subscribeAction
-} from '../../../../src/redux/auth/auth-saga';
+import {fakeProfileApi, fakeSubscribeApi} from '../../../../src/api/api-simulation';
+import {loginSaga} from '../../../../src/redux/auth/auth-saga';
+// import {expectSaga} from 'redux-saga-test-plan';
 // import * as matchers from 'redux-saga-test-plan/matchers';
 
 describe('AuthSaga', () => {
@@ -16,15 +11,18 @@ describe('AuthSaga', () => {
         password: 'test'
     };
 
-    test('API: Get Login Data', () => {
+    test('loginSaga process should go through all fake api', () => {
         const apiGenerator = loginSaga(testData.account, testData.password);
         const callGetDataApi = apiGenerator.next().value;
         expect(callGetDataApi).toEqual(
             all([
-                call(profileApiSimulation, testData.account, testData.password),
-                call(subscribeApiSimulation, testData.account, testData.password)
+                call(fakeProfileApi, testData.account, testData.password),
+                call(fakeSubscribeApi, testData.account, testData.password)
             ])
         );
     });
+
+    // test('authSaga process should go through fork effect ', () => {
+    // });
 
 });

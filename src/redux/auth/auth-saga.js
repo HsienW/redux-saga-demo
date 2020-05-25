@@ -1,6 +1,6 @@
 import {all, call, put, take, fork, cancel, cancelled} from 'redux-saga/effects';
 import {setSession, clearSession} from '../../utils/utils';
-import {profileApiSimulation, subscribeApiSimulation} from '../../api/api-simulation';
+import {fakeProfileApi, fakeSubscribeApi} from '../../api/api-simulation';
 
 export const loginAction = {
     LOGIN_START: 'LOGIN_START',
@@ -69,10 +69,10 @@ export const logout = response => ({
 
 export function* loginSaga(account, password) {
     try {
-        // const response = yield call(profileApiSimulation, account, password);
+        // const response = yield call(fakeProfileApi, account, password);
         const [profileResponse, subscribeResponse] = yield all([
-            call(profileApiSimulation, account, password),
-            call(subscribeApiSimulation, account, password)
+            call(fakeProfileApi, account, password),
+            call(fakeSubscribeApi, account, password)
         ]);
         yield put(loginSuccess(profileResponse));
         yield put(getSubscribeSuccess(subscribeResponse));
